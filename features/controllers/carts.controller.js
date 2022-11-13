@@ -5,7 +5,7 @@ require("dotenv").config();
 const addTocart = async (pId, mainToken) => {
   let response;
   try {
-    const userData = jwt.verify(mainToken, process.env.JWT_MAIN_SECRET);
+    const userData = jwt.verify(mainToken, `${process.env.JWT_MAIN_SECRET}`);
     const isPresent =await CartModel.findOne({userId:userData.id,product:pId})
     console.log(isPresent)
     if(isPresent)
@@ -27,7 +27,7 @@ const addTocart = async (pId, mainToken) => {
 const removeFromCart = async (pId, mainToken) => {
   let response;
   try {
-    const userData = jwt.verify(mainToken, process.env.JWT_MAIN_SECRET);
+    const userData = jwt.verify(mainToken, `${process.env.JWT_MAIN_SECRET}`);
     const updateCart = await CartModel.deleteOne({userId:userData.id,product:pId});
     response = { message: "Successful" };
   } catch (e) {
@@ -39,7 +39,7 @@ const removeFromCart = async (pId, mainToken) => {
 const updateCart = async (pid, mainToken, quantity) => {
   let response;
   try {
-    const userData = jwt.verify(mainToken, process.env.JWT_MAIN_SECRET);
+    const userData = jwt.verify(mainToken, `${process.env.JWT_MAIN_SECRET}`);
     console.log(userData.id,pid)
     const pr=await CartModel.findOne({userId:userData.id,product:pid})
     console.log(pr,"existing")

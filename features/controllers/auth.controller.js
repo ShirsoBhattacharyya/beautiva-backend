@@ -21,7 +21,7 @@ const createUserEmail=async(firstName,lastName,userName,password,email)=>{
            {
                const otp=Math.floor(Math.random()*100000)
                const sentOtp=await sendEmail(email,otp)
-               const hashed_password=crypto.AES.encrypt(password,process.env.PASSWORD_SECRET).toString()
+               const hashed_password=crypto.AES.encrypt(password,`${process.env.PASSWORD_SECRET}`).toString()
                const newUser=await UserModel.create({firstName,lastName,userName,password:hashed_password,email})
                redis.set(email,otp,"ex",300,(err,res)=>{
                   if(err)
