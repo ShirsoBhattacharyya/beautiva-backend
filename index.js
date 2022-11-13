@@ -8,8 +8,8 @@ const wishlistRouter = require("./features/routes/wishlist.route");
 const orderRouter = require("./features/routes/order.route");
 const paymentRouter = require("./features/routes/payment.route");
 const authRouter = require("./features/routes/auth.email.route");
-const googleRouter=require("../backend/features/routes/auth.google.route")
-const cartRouter=require("../backend/features/routes/cart.route")
+const googleRouter=require("./features/routes/auth.google.route");
+const cartRouter=require("../backend/features/routes/cart.route");
 const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
