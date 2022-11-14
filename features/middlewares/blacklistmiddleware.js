@@ -7,7 +7,7 @@ const jwt=require("jsonwebtoken")
 const redis=require("../../config/redis")
 const blacklistMiddleware=async(req,res,next)=>{
     const mainToken=req.headers.authorization
-    const data=jwt.decode(mainToken,`${process.env.JWT_MAIN_SECRET}`)
+    const data=jwt.decode(mainToken,`uifshdgil;krhnb;lkfhjgoi;telhjglkfnblki;gtjhnlailkuhfeilo;hwbglkjdsahglikwhfil;KWAQHRKIEQHFGLKAHWNGFKJLRHGLKFSHGJKFHBGHKJFHGSUEWGFHJASBVFJDNFQLIKJFILEWJF`)
     const isBlacklisted = redis.get(data.id,(err,result)=>{
         if(err)
         {

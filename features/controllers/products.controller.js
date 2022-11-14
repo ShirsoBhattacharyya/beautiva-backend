@@ -4,7 +4,7 @@ const jwt=require("jsonwebtoken")
 const addProducts=async(mainToken,data)=>{
     let response
      try{
-         const userData=jwt.verify(mainToken,`${process.env.JWT_MAIN_SECRET}`)
+         const userData=jwt.verify(mainToken,`uifshdgil;krhnb;lkfhjgoi;telhjglkfnblki;gtjhnlailkuhfeilo;hwbglkjdsahglikwhfil;KWAQHRKIEQHFGLKAHWNGFKJLRHGLKFSHGJKFHBGHKJFHGSUEWGFHJASBVFJDNFQLIKJFILEWJF`)
          if(userData.role!="Admin")
          {
             response={message:"Unauthorized"}
@@ -53,7 +53,7 @@ const getSingleProduct=async(id)=>{
 const removeProduct=async(mainToken,id)=>{
     let response;
     try{
-        const data=jwt.verify(mainToken,`${process.env.JWT_MAIN_SECRET}`)
+        const data=jwt.verify(mainToken,`uifshdgil;krhnb;lkfhjgoi;telhjglkfnblki;gtjhnlailkuhfeilo;hwbglkjdsahglikwhfil;KWAQHRKIEQHFGLKAHWNGFKJLRHGLKFSHGJKFHBGHKJFHGSUEWGFHJASBVFJDNFQLIKJFILEWJF`)
         if(data.role==="Admin")
         {
             await ProductModel.deleteOne({_id:id})
@@ -72,7 +72,7 @@ const removeProduct=async(mainToken,id)=>{
 const updateProduct=async(mainToken,id,newData)=>{
     let response;
     try{
-        const data=jwt.verify(mainToken,`${process.env.JWT_MAIN_SECRET}`)
+        const data=jwt.verify(mainToken,`uifshdgil;krhnb;lkfhjgoi;telhjglkfnblki;gtjhnlailkuhfeilo;hwbglkjdsahglikwhfil;KWAQHRKIEQHFGLKAHWNGFKJLRHGLKFSHGJKFHBGHKJFHGSUEWGFHJASBVFJDNFQLIKJFILEWJF`)
         if(data.role==="Admin")
         {
             await ProductModel.updateOne({_id:id},{$set:newData})

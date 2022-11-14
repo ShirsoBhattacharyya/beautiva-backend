@@ -21,7 +21,7 @@ const createUserEmail=async(firstName,lastName,userName,password,email)=>{
            {
                const otp=Math.floor(Math.random()*100000)
                const sentOtp=await sendEmail(email,otp)
-               const hashed_password=crypto.AES.encrypt(password,`${process.env.PASSWORD_SECRET}`).toString()
+               const hashed_password=crypto.AES.encrypt(password,`Beautiva_2022`).toString()
                const newUser=await UserModel.create({firstName,lastName,userName,password:hashed_password,email})
                redis.set(email,otp,"ex",300,(err,res)=>{
                   if(err)
@@ -100,17 +100,17 @@ const validateUser=async(email,password)=>{
        let response;
        try{
            const user=await UserModel.findOne({email:email})
-           const password_db=crypto.AES.decrypt(user.password,`${process.env.PASSWORD_SECRET}`).toString(crypto.enc.Utf8)
+           const password_db=crypto.AES.decrypt(user.password,`Beautiva_2022`).toString(crypto.enc.Utf8)
            if(!user||password!==password_db)
            {
                response={message:"Invalid credentials"} 
            }
            else
            {
-               const mainToken=jwt.sign({id:user._id,role:user.role},`${process.env.JWT_MAIN_SECRET}`,{
+               const mainToken=jwt.sign({id:user._id,role:user.role},`uifshdgil;krhnb;lkfhjgoi;telhjglkfnblki;gtjhnlailkuhfeilo;hwbglkjdsahglikwhfil;KWAQHRKIEQHFGLKAHWNGFKJLRHGLKFSHGJKFHBGHKJFHGSUEWGFHJASBVFJDNFQLIKJFILEWJF`,{
                 expiresIn:"5 days"
                })
-               const refreshToken=jwt.sign({id:user._id,role:user.role},`${process.env.JWT_REFRESH_SECRET}`,{
+               const refreshToken=jwt.sign({id:user._id,role:user.role},`apqwiffrpQ;o'plfegkj';oqejgo;wjhg;lirhgoietrjhpo'jhgo;p'rjhpotjuhop;kjpkejpw;logkjgop;rjho;teljhoptrjholp;t;rhkjop;ryjporykjo;tlkhjpo;rtkjhhrehngiuwh`,{
                 expiresIn:"7 days"
                })
                response= {message:"Login successful",asv:mainToken,csv:refreshToken, firstName:user.firstName, lastName:user.lastName, userName:user.userName, uId:user._id}
@@ -131,10 +131,11 @@ const revalidateUser=async(refreshToken)=>{
     // console.log(refreshToken,"hello")
     let response;
     try{
-        const data=jwt.verify(refreshToken,`${process.env.JWT_REFRESH_SECRET}`)
+        const data=jwt.verify(refreshToken,`apqwiffrpQ;o'plfegkj';oqejgo;wjhg;lirhgoietrjhpo'jhgo;p'rjhpotjuhop;kjp
+        kejpw;logkjgop;rjho;teljhoptrjholp;t;rhkjop;ryjporykjo;tlkhjpo;rtkjhhrehngiuwh`)
         delete data.exp
         delete data.iat
-        const newMainToken=jwt.sign(data,`${process.env.JWT_MAIN_SECRET}`,{
+        const newMainToken=jwt.sign(data,`uifshdgil;krhnb;lkfhjgoi;telhjglkfnblki;gtjhnlailkuhfeilo;hwbglkjdsahglikwhfil;KWAQHRKIEQHFGLKAHWNGFKJLRHGLKFSHGJKFHBGHKJFHGSUEWGFHJASBVFJDNFQLIKJFILEWJF`,{
             expiresIn :"5 seconds"
         })
         response={message:"successful",asv:newMainToken}

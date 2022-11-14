@@ -10,7 +10,7 @@ const authMiddleware=(req,res,next)=>{
    if(mainToken)
    {
       try{
-        let userData=jwt.verify(mainToken,`${process.env.JWT_MAIN_SECRET}`)
+        let userData=jwt.verify(mainToken,`uifshdgil;krhnb;lkfhjgoi;telhjglkfnblki;gtjhnlailkuhfeilo;hwbglkjdsahglikwhfil;KWAQHRKIEQHFGLKAHWNGFKJLRHGLKFSHGJKFHBGHKJFHGSUEWGFHJASBVFJDNFQLIKJFILEWJF`)
         req.body.userID=userData.id
         next()
       }catch(e)

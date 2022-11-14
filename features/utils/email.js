@@ -4,14 +4,14 @@ require("dotenv").config()
 const transport=nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: `${process.env.BEAUTIVA_EMAIL_USER}`,
-        pass: `${process.env.BEAUTIVA_EMAIL_PASSWORD}`
+        user: `sanjay1997mys@gmail.com`,
+        pass: `aizogqabaqnddchq`
     }
 })
 const sendEmail=async(email,otp)=>{
     // console.log(email,otp)
     const details = { 
-        from:`${process.env.BEAUTIVA_EMAIL_USER}`,
+        from:`sanjay1997mys@gmail.com`,
         to:email,
         subject:"OTP",
         text:`Hello ${email}, your OTP is ${otp} NOTE: Otp expires in 5 minutes`

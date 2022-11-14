@@ -4,7 +4,7 @@ require("dotenv").config()
 const addToWishlist=async(mainToken,productID)=>{
     let response;
     try{
-        const userData=jwt.verify(mainToken,`${process.env.JWT_MAIN_SECRET}`)
+        const userData=jwt.verify(mainToken,`uifshdgil;krhnb;lkfhjgoi;telhjglkfnblki;gtjhnlailkuhfeilo;hwbglkjdsahglikwhfil;KWAQHRKIEQHFGLKAHWNGFKJLRHGLKFSHGJKFHBGHKJFHGSUEWGFHJASBVFJDNFQLIKJFILEWJF`)
         const isPresent=await WishlistModel.findOne({userId:userData.id,product:productID})
         if(isPresent)
         {
@@ -35,7 +35,7 @@ const getWishlist=async(id)=>{
 const deleteFromWishlist=async(id,mainToken)=>{
     let response;
     try{
-        const userData=jwt.verify(mainToken,`${process.env.JWT_MAIN_SECRET}`)
+        const userData=jwt.verify(mainToken,`uifshdgil;krhnb;lkfhjgoi;telhjglkfnblki;gtjhnlailkuhfeilo;hwbglkjdsahglikwhfil;KWAQHRKIEQHFGLKAHWNGFKJLRHGLKFSHGJKFHBGHKJFHGSUEWGFHJASBVFJDNFQLIKJFILEWJF`)
         const updateWishlist=await WishlistModel.deleteOne({userId:userData.id,product:id})
         response={message:"Successful"}
     }catch(e){
