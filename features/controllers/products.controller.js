@@ -4,7 +4,7 @@ const jwt=require("jsonwebtoken")
 const addProducts=async(mainToken,data)=>{
     let response
      try{
-         const userData=jwt.verify(mainToken,`uifshdgil;krhnb;lkfhjgoi;telhjglkfnblki;gtjhnlailkuhfeilo;hwbglkjdsahglikwhfil;KWAQHRKIEQHFGLKAHWNGFKJLRHGLKFSHGJKFHBGHKJFHGSUEWGFHJASBVFJDNFQLIKJFILEWJF`)
+         const userData=jwt.verify(mainToken,process.env.JWT_MAIN_SECRET)
          if(userData.role!="Admin")
          {
             response={message:"Unauthorized"}
@@ -32,7 +32,7 @@ const getAllProducts=async(req)=>{
     const {page=1,category}=req.query
     let response;
     try{
-       const allProducts=await ProductModel.find().skip((page-1)*5).limit(5)
+       const allProducts=await ProductModel.find().skip((page-1)*6).limit(6)
        response={message:"Successful", data:allProducts}
     }catch(e){
        response={message:e.message}
@@ -53,7 +53,7 @@ const getSingleProduct=async(id)=>{
 const removeProduct=async(mainToken,id)=>{
     let response;
     try{
-        const data=jwt.verify(mainToken,`uifshdgil;krhnb;lkfhjgoi;telhjglkfnblki;gtjhnlailkuhfeilo;hwbglkjdsahglikwhfil;KWAQHRKIEQHFGLKAHWNGFKJLRHGLKFSHGJKFHBGHKJFHGSUEWGFHJASBVFJDNFQLIKJFILEWJF`)
+        const data=jwt.verify(mainToken,process.env.JWT_MAIN_SECRET)
         if(data.role==="Admin")
         {
             await ProductModel.deleteOne({_id:id})
@@ -72,7 +72,7 @@ const removeProduct=async(mainToken,id)=>{
 const updateProduct=async(mainToken,id,newData)=>{
     let response;
     try{
-        const data=jwt.verify(mainToken,`uifshdgil;krhnb;lkfhjgoi;telhjglkfnblki;gtjhnlailkuhfeilo;hwbglkjdsahglikwhfil;KWAQHRKIEQHFGLKAHWNGFKJLRHGLKFSHGJKFHBGHKJFHGSUEWGFHJASBVFJDNFQLIKJFILEWJF`)
+        const data=jwt.verify(mainToken,process.env.JWT_MAIN_SECRET)
         if(data.role==="Admin")
         {
             await ProductModel.updateOne({_id:id},{$set:newData})
