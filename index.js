@@ -10,6 +10,7 @@ const paymentRouter = require("./features/routes/payment.route");
 const authRouter = require("./features/routes/auth.email.route");
 const googleRouter=require("./features/routes/auth.google.route");
 const cartRouter=require("./features/routes/cart.route");
+const adminRouter=require('./features/routes/admin.route');
 const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -22,7 +23,8 @@ app.use("/comments", commentRouter);
 app.use("/wishlist", wishlistRouter);
 app.use("/orders", orderRouter);
 app.use("/payments", paymentRouter);
-app.use("/cart",cartRouter)
+app.use("/cart",cartRouter);
+app.use("/admin",adminRouter);
 
 
 const PORT=process.env.PORT||8080;
