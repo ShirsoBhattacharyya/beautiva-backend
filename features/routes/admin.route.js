@@ -66,7 +66,7 @@ router.get("/products/all",async(req,res)=>{
     }
 })
 //admin-add a product
-router.post("products/all",async(req,res)=>{
+router.post("/products/all",async(req,res)=>{
     const {image1,title,description,category,brand,price,quan}=req.body
     console.log(req.body);
     try{
