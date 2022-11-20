@@ -74,4 +74,14 @@ router.patch("/:id",async(req,res)=>{
     }
     return res.status(401).send(response)
 })
+//admin-get-products
+router.get("/admin-products",async(req,res)=>{
+    try{
+        const allProducts=await ProductModel.find()
+        return res.send({message:success,data:allProducts})
+    }catch(e){
+        return res.status(401).send({message:e.message})
+    }
+
+})
 module.exports=router
